@@ -1,0 +1,34 @@
+#!/usr/bin/env perl
+use strict;
+use warnings;
+use Data::Dumper;
+
+BEGIN { unshift(@INC, './modules') }
+BEGIN {
+    use Test::Most;
+    use_ok('SetupTracking::Database');
+}
+
+ok my $database = SetupTracking::Database->new(
+  short_name => 'mytest',
+  ), 'initialise valid object';
+is  $database->name(), "pathogen_mytest_external", 'generated name';
+
+ok $database->create_database, 'create the database';
+ok $database->create_tables, 'create vrtrack tables';
+
+
+ok $database->_dbh->do("select * from schema_version"),'can connect to the database and perform a simple query';
+ok $database->_dbh->do("drop database pathogen_mytest_external"), 'remove tempory database';
+
+ok $database = SetupTracking::Database->new(
+  short_name => 'mytest',
+  prefix => 'anotherprefix',
+  suffix => 'changedsuffix'
+  ), 'initialise valid object with supplied prefix and suffix';
+is  $database->name(), "anotherprefix_mytest_changedsuffix", 'generated name with supplied prefix and suffix';
+
+
+
+
+done_testing();
