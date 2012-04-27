@@ -29,7 +29,7 @@ sub _build__template
 
   my $config = {
       INTERPOLATE  => 1,  # expand "$var" in plain text
-      POST_CHOMP   => 1,  # cleanup whitespace
+      POST_CHOMP   => 0,  # cleanup whitespace
       EVAL_PERL    => 1,  # evaluate Perl code blocks
   };
 
@@ -39,12 +39,10 @@ sub _build__template
 sub render_to_file
 {
   my ($self) = @_;
-  my $output = '';
-  
-  open(my $fh, $self->_input_file_name) or die 'couldnt open input file '.$self->_input_file_name;
-  $self->_template->process($fh, $self->params, \$output)
-       ->output($self->output_file_name) || die $self->_template->error();
-  $output;
+
+  open(my $fh, $self->input_file_name) or die 'couldnt open input file '.$self->input_file_name;
+  $self->_template->process($fh, $self->params, $self->output_file_name) || die $self->_template->error();
+  return $self;
 }
 
 1;

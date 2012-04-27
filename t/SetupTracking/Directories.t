@@ -21,8 +21,10 @@ ok (-d "t/data/pipeline/pathogen_abc_track/seq-pipelines");
 ok (-d "t/data/conf/pathogen_abc_track/mapping");
 ok (-d "t/data/log/pathogen_abc_track");
 
-rmtree("t/data/pipeline");
-rmtree("t/data/conf");
-rmtree("t/data/log");
+ok $directories->destroy_directories();
+ok (! -d "t/data/pipeline/pathogen_abc_track/seq-pipelines");
+ok (! -d "t/data/conf/pathogen_abc_track/mapping");
+ok (! -d "t/data/log/pathogen_abc_track");
+
 
 done_testing();

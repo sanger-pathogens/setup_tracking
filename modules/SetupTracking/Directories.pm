@@ -16,7 +16,7 @@ my $directories = SetupTracking::Directories->new(
 =cut
 package SetupTracking::Directories;
 use Moose;
-use File::Path qw(make_path);
+use File::Path qw(make_path rmtree);
 
 has 'pipeline_base_directory' => ( is => 'ro', isa => 'Str', required   => 1 );
 has 'config_base_directory'   => ( is => 'ro', isa => 'Str', required   => 1 );
@@ -73,6 +73,16 @@ sub create_directories
   for my $directory_name (@{$self->_directories_to_make})
   { 
     make_path($directory_name , {mode => 0775});
+  }
+  return $self;
+}
+
+sub destroy_directories
+{
+  my($self) = @_;
+  for my $directory_name (@{$self->_directories_to_make})
+  { 
+    rmtree($directory_name);
   }
   return $self;
 }
