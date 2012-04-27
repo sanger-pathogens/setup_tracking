@@ -9,7 +9,7 @@ my $database = SetupTracking::Database->new(
   short_name => 'prok',
   );
   $database->name();
-  $database->create_database->create_tables();
+  $database->create_database->create_tables()->seed_database();
 
 =cut
 package SetupTracking::Database;
@@ -17,7 +17,8 @@ use Moose;
 use VRTrack::VRTrack;
 use DBI;
 use DBD::mysql;
-extends 'SetupTracking::DatabaseCommon';
+use SetupTracking::Database::Seed;
+extends 'SetupTracking::Database::Common';
 
 sub create_database
 {
@@ -41,6 +42,13 @@ sub create_tables
     $self->_dbh->do($_); 
   }
   
+  return $self;
+}
+
+sub seed_database
+{
+  my ($self) = @_;
+  SetupTracking::Database::Seed->new(_dbh => $self->_dbh)->seed_database(); 
   return $self;
 }
 

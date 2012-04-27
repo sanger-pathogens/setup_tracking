@@ -15,7 +15,7 @@ SetupTracking::ConfigFiles->new(
 package SetupTracking::ConfigFiles;
 use Moose;
 use SetupTracking::ConfigFile;
-extends 'SetupTracking::DatabaseSettings';
+extends 'SetupTracking::Database::Settings';
 
 has 'directories_obj'   => ( is => 'ro', isa => 'SetupTracking::Directories', required   => 1 );
 

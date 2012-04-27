@@ -1,4 +1,4 @@
-package SetupTracking::DatabaseSettings;
+package SetupTracking::Database::Settings;
 use Moose;
 use Pathogens::ConfigSettings;
 

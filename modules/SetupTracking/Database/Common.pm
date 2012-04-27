@@ -1,11 +1,11 @@
 =head1 NAME
 
-DatabaseCommon.pm - Common database functionality
+Database::Common.pm - Common database functionality
 
 =head1 SYNOPSIS
 
-use SetupTracking::DatabaseCommon;
-my $database = SetupTracking::DatabaseCommon->new(
+use SetupTracking::Database::Common;
+my $database = SetupTracking::Database::Common->new(
   environment => 'test',
   short_name => 'somename'
   );
@@ -13,12 +13,12 @@ my $database = SetupTracking::DatabaseCommon->new(
   $database->name();
 
 =cut
-package SetupTracking::DatabaseCommon;
+package SetupTracking::Database::Common;
 use Moose;
 use Pathogens::ConfigSettings;
 use DBI;
 use DBD::mysql;
-extends 'SetupTracking::DatabaseSettings';
+extends 'SetupTracking::Database::Settings';
 
 has 'short_name'          => ( is => 'ro', isa => 'Str', required   => 1 );
 has 'prefix'              => ( is => 'ro', isa => 'Str', default    => 'pathogen' );
