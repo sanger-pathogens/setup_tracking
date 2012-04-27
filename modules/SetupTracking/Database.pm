@@ -52,5 +52,12 @@ sub seed_database
   return $self;
 }
 
+sub destory_database
+{
+  my ($self) = @_;
+  $self->_dbh->do("drop database ".$self->name);
+  return $self;
+}
+
 
 1;

@@ -25,7 +25,7 @@ ok (my $sth = $database->_dbh->prepare("select * from population"), 'lookup the 
 $sth->execute;
 is 1, $sth->rows, 'default population row returned';
 
-ok $database->_dbh->do("drop database pathogen_mytest_external"), 'remove tempory database';
+ok $database->destory_database, 'remove tempory database';
 
 ok $database = SetupTracking::Database->new(
   short_name => 'mytest',

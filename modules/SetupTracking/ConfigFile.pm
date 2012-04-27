@@ -15,26 +15,12 @@ SetupTracking::ConfigFile->new(
 
 package SetupTracking::ConfigFile;
 use Moose;
-use Template;
+extends 'SetupTracking::TemplateToolkitCommon';
 
 has 'input_file_name'  => ( is => 'ro', isa => 'Str',            required => 1);
 has 'output_file_name' => ( is => 'ro', isa => 'Str',            required => 1);
 has 'params'           => ( is => 'ro', isa => 'Maybe[HashRef]', required => 1);
 
-has '_template'        => ( is => 'ro', isa => 'Template',       lazy_build => 1);
-
-sub _build__template
-{
-  my ($self) = @_;
-
-  my $config = {
-      INTERPOLATE  => 1,  # expand "$var" in plain text
-      POST_CHOMP   => 0,  # cleanup whitespace
-      EVAL_PERL    => 1,  # evaluate Perl code blocks
-  };
-
-  Template->new($config);
-}
 
 sub render_to_file
 {

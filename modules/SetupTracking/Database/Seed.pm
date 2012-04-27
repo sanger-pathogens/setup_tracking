@@ -10,7 +10,7 @@ SetupTracking::Database::Seed->new(_dbh => $dbh)->seed_database;
 =cut
 
 package SetupTracking::Database::Seed;
-use Moose;
+use Moose;  
 
 has '_dbh' => ( is => 'ro', required => 1 );
 
