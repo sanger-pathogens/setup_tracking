@@ -37,7 +37,7 @@ GetOptions(
 
 $shortname = $ARGV[0];
 
-($shortname || length($shortname) < 10 ) or die <<USAGE;
+(length($shortname) >= 3 && length($shortname) < 10 ) or die <<USAGE;
 
 Usage: $0 [options] short_name
   -d|pipeline_base_directory  <Base directory for pipeline defaults to /lustre/scratch108/pathogen/pathpipe>

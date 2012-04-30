@@ -29,7 +29,6 @@ sub create_database
   my $dbh_without_database_name = DBI->connect("DBI:mysql:host=$host:port=$port", $self->_database_settings->{user}, $self->_database_settings->{password}, {'RaiseError' => 1, 'PrintError'=>0});
   
   $dbh_without_database_name->do("CREATE DATABASE ".$self->name);
-  $dbh_without_database_name->do("FLUSH PRIVILEGES");
   return $self;
 }
 
