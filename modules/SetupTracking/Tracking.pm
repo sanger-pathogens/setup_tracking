@@ -21,12 +21,14 @@ use SetupTracking::Directories;
 use SetupTracking::ConfigFiles;
 use SetupTracking::Reporting;
 
-has 'short_name'           => ( is => 'ro', isa => 'Str', required => 1 );
+has 'short_name'              => ( is => 'ro', isa => 'Str', required  => 1 );
                                                                       
-has 'pipeline_base_directory' => ( is => 'rw', isa => 'Str', default  => '/lustre/scratch108/pathogen/pathpipe' );
-has 'config_base_directory'   => ( is => 'rw', isa => 'Str', default  => '/nfs/pathnfs01/conf' );
-has 'log_base_directory'      => ( is => 'rw', isa => 'Str', default  => '/nfs/pathnfs01/log'  );
-
+has 'pipeline_base_directory' => ( is => 'rw', isa => 'Str', required  => 1 );
+has 'config_base_directory'   => ( is => 'rw', isa => 'Str', required  => 1 );
+has 'log_base_directory'      => ( is => 'rw', isa => 'Str', required  => 1 );
+has 'prefix'                  => ( is => 'ro', isa => 'Str', required  => 1 );
+has 'suffix'                  => ( is => 'ro', isa => 'Str', required  => 1 );
+has 'environment'             => ( is => 'ro', isa => 'Str', required  => 1 );
 
 has '_database_obj'           => ( is => 'rw', isa => 'SetupTracking::Database',    lazy_build => 1  );
 has '_directories_obj'        => ( is => 'rw', isa => 'SetupTracking::Directories', lazy_build => 1  );
@@ -35,7 +37,12 @@ has '_config_files_obj'       => ( is => 'rw', isa => 'SetupTracking::ConfigFile
 sub _build__database_obj
 {
   my ($self) = @_;
-  SetupTracking::Database->new(short_name => $self->short_name);
+  SetupTracking::Database->new(
+    short_name  => $self->short_name,
+    prefix      => $self->prefix,
+    suffix      => $self->suffix,
+    environment => $self->environment
+  );
 }
 
 sub _build__directories_obj
