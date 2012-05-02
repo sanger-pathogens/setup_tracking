@@ -59,3 +59,9 @@ VALUES	(1,'SC');
 
 INSERT INTO `seq_tech` (`seq_tech_id`, `name`)
 VALUES	(1,'SLX');
+
+INSERT INTO `project` (`project_id`,`ssid`,`name`, `hierarchy_name`,`study_id`,`changed`,`latest`)
+VALUES	(1,1,'Study','Study',1,NOW(),1);
+
+INSERT INTO `study` (`study_id`, `name`)
+VALUES	(1,'');
