@@ -59,7 +59,10 @@ sub _build__directories_obj
 sub _build__config_files_obj
 {
   my ($self) = @_;
-  SetupTracking::ConfigFiles->new( directories_obj => $self->_directories_obj );
+  SetupTracking::ConfigFiles->new( 
+    directories_obj => $self->_directories_obj,
+    environment => $self->environment 
+    );
 }
 
 
