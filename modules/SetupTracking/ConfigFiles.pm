@@ -89,7 +89,7 @@ sub _create_qc_lanes_file
       database_name      => $self->directories_obj->database_name,
       database_host      => $self->_database_settings->{host},
       database_port      => $self->_database_settings->{port},
-      database_user      => $self->_database_settings->{user},
+      database_user      => $self->_database_settings->{user_rw},
       database_password  => $self->_database_settings->{password},
     },
   )->render_to_file();
@@ -108,7 +108,7 @@ sub _create_mapping_lanes_file
       database_name      => $self->directories_obj->database_name,
       database_host      => $self->_database_settings->{host},
       database_port      => $self->_database_settings->{port},
-      database_user      => $self->_database_settings->{user},
+      database_user      => $self->_database_settings->{user_rw},
       database_password  => $self->_database_settings->{password},
     },
   )->render_to_file();
@@ -127,7 +127,7 @@ sub _create_stored_lanes_file
       database_name      => $self->directories_obj->database_name,
       database_host      => $self->_database_settings->{host},
       database_port      => $self->_database_settings->{port},
-      database_user      => $self->_database_settings->{user},
+      database_user      => $self->_database_settings->{user_rw},
       database_password  => $self->_database_settings->{password},
     },
   )->render_to_file();
