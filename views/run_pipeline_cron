@@ -1,1 +1,1 @@
-1 * * * * umask 002; source $SETUP_SCRIPT; $PERL_LOC/perl $VR_BIN_LOC/run-pipeline -c [% config_file %] -l [% log_file %] -o -v -v -L [% lock_file %]
+1 * * * * umask 002; source \$SETUP_SCRIPT; \$PERL_LOC/perl \$VR_BIN_LOC/run-pipeline -c [% config_file %] -l [% log_file %] -o -v -v -L [% lock_file %]
