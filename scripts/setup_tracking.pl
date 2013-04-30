@@ -69,9 +69,6 @@ $environment             ||= 'production';
 
 my $assembly_file = $populate_assembly ? '':'/lustre/scratch108/pathogen/pathpipe/refs/refs.index';
 
-print $assembly_file."\n";
-exit;
-
 SetupTracking::Tracking->new(
   short_name              => $shortname,
   pipeline_base_directory => $pipeline_base_directory,
