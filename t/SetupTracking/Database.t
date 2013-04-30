@@ -25,6 +25,9 @@ ok (my $sth = $database->_dbh->prepare("select * from population"), 'lookup the 
 $sth->execute;
 is 1, $sth->rows, 'default population row returned';
 
+# check populate assembly
+ok $database->populate_assembly('t/data/refs.index'), 'populate assembly table';
+
 ok $database->destory_database, 'remove tempory database';
 
 ok $database = SetupTracking::Database->new(
