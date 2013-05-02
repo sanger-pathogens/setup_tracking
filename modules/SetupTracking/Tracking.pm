@@ -29,6 +29,7 @@ has 'log_base_directory'      => ( is => 'rw', isa => 'Str', required  => 1 );
 has 'prefix'                  => ( is => 'ro', isa => 'Str', required  => 1 );
 has 'suffix'                  => ( is => 'ro', isa => 'Str', required  => 1 );
 has 'environment'             => ( is => 'ro', isa => 'Str', required  => 1 );
+has 'assembly_file'           => ( is => 'ro', isa => 'Str', default   => '' );
 
 has '_database_obj'           => ( is => 'rw', isa => 'SetupTracking::Database',    lazy_build => 1  );
 has '_directories_obj'        => ( is => 'rw', isa => 'SetupTracking::Directories', lazy_build => 1  );
@@ -70,6 +71,7 @@ sub _create_database
 {
   my ($self) = @_;
   $self->_database_obj->create_database->create_tables()->seed_database();
+  $self->_database_obj->populate_assembly($self->assembly_file) if $self->assembly_file;
   return $self;
 }
 

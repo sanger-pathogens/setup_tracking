@@ -18,6 +18,7 @@ use VRTrack::VRTrack;
 use DBI;
 use DBD::mysql;
 use SetupTracking::Database::Seed;
+use SetupTracking::Database::PopulateAssembly;
 extends 'SetupTracking::Database::Common';
 
 sub create_database
@@ -49,6 +50,13 @@ sub seed_database
   my ($self) = @_;
   SetupTracking::Database::Seed->new(_dbh => $self->_dbh)->seed_database(); 
   return $self;
+}
+
+sub populate_assembly
+{
+    my ($self, $assembly_file) = @_;
+    SetupTracking::Database::PopulateAssembly->new( dbh => $self->_dbh, file => $assembly_file )->populate_table();
+    return $self;
 }
 
 sub destory_database

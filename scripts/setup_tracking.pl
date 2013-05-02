@@ -16,6 +16,7 @@ path-help@sanger.ac.uk
 
 =cut
 
+BEGIN { unshift(@INC, './modules') }
 use strict;
 use warnings;
 no warnings 'uninitialized';
@@ -23,7 +24,7 @@ use Getopt::Long;
 use SetupTracking::Tracking;
 
 
-my($shortname, $pipeline_base_directory, $config_base_directory, $log_base_directory, $prefix, $suffix, $environment, $help );
+my($shortname, $pipeline_base_directory, $config_base_directory, $log_base_directory, $prefix, $suffix, $environment, $populate_assembly, $help );
 
 GetOptions(
    'd|pipeline_base_directory=s' => \$pipeline_base_directory,
@@ -32,6 +33,7 @@ GetOptions(
    'p|prefix=s'                  => \$prefix,
    's|suffix=s'                  => \$suffix,
    'e|environment=s'             => \$environment,
+   'n|no_populate_assembly'      => \$populate_assembly,
    'h|help'                      => \$help
     );
 
@@ -46,6 +48,7 @@ Usage: $0 [options] short_name
   -p|prefix                   <prefix of database name, defaults to pathogen>
   -s|suffix                   <suffix of database name, defaults to external>
   -e|environment              <production or test, defaults to production>
+  -n|no_populate_assembly     <do not populate assembly table>
   -h|help                     <print this message>
 
 Defaults should be find for pathogens, so typical usage is:
@@ -64,6 +67,8 @@ $prefix                  ||= 'pathogen';
 $suffix                  ||= 'external';
 $environment             ||= 'production';
 
+my $assembly_file = $populate_assembly ? '':'/lustre/scratch108/pathogen/pathpipe/refs/refs.index';
+
 SetupTracking::Tracking->new(
   short_name              => $shortname,
   pipeline_base_directory => $pipeline_base_directory,
@@ -72,5 +77,6 @@ SetupTracking::Tracking->new(
   prefix                  => $prefix,
   suffix                  => $suffix,
   environment             => $environment,
+  assembly_file           => $assembly_file,
 )->create()->print_cron();
 
