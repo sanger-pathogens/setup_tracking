@@ -67,7 +67,7 @@ $prefix                  ||= 'pathogen';
 $suffix                  ||= 'external';
 $environment             ||= 'production';
 
-my $assembly_file = $populate_assembly ? '':'/lustre/scratch108/pathogen/pathpipe/refs/refs.index';
+my $assembly_file = $populate_assembly ? undef :'/lustre/scratch108/pathogen/pathpipe/refs/refs.index';
 
 SetupTracking::Tracking->new(
   short_name              => $shortname,
