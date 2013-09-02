@@ -61,8 +61,8 @@ Setup a new vrtrack pipeline. It creates a database, initally seeds it, creates 
 USAGE
 
 $pipeline_base_directory ||= '/lustre/scratch108/pathogen/pathpipe' ;
-$config_base_directory   ||= '/nfs/pathnfs01/conf';
-$log_base_directory      ||= '/nfs/pathnfs01/log' ;
+$config_base_directory   ||= '/nfs/pathnfs05/conf';
+$log_base_directory      ||= '/nfs/pathnfs05/log' ;
 $prefix                  ||= 'pathogen';
 $suffix                  ||= 'external';
 $environment             ||= 'production';
