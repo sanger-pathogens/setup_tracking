@@ -33,7 +33,7 @@ sub _build__assemblies
   while(my $line = readline $self->_fh)
   {
       chomp $line;
-      my($ref_name, $ref_fa_file) = split(/\t/,$line);
+      my($ref_name, $ref_fa_file) = split(/\s+/,$line);
       $ref_name    =~ s/\s+//gi;
       $ref_fa_file =~ s/\s+//gi;
       my $ref_size = $self->_get_ref_size($ref_fa_file);
