@@ -16,7 +16,7 @@ path-help@sanger.ac.uk
 
 =cut
 
-BEGIN { unshift(@INC, './modules') }
+BEGIN { unshift(@INC, './lib') }
 use strict;
 use warnings;
 no warnings 'uninitialized';
