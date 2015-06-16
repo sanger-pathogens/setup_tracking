@@ -9,13 +9,5 @@ perl:
   - 5.14
 sudo: false
 install:
-  - 'cpanm Dist::Zilla'
-  - 'cpanm Template'
-  - 'cpanm YAML::XS'
-  - 'cpanm File::Slurp'
-  - 'cpanm DBI'
-  - 'cpanm DBD::mysql'
-  - 'dzil authordeps --missing | cpanm'
-install:
   - "source ./install_dependencies.sh"
 script: dzil test	

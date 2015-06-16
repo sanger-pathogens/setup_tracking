@@ -23,5 +23,9 @@ export PERL5LIB=${VRCODEBASE_LIB}:${SELF_LIB}:$PERL5LIB
 
 cd $start_dir
 
+cpanm Dist::Zilla
+dzil authordeps --missing | cpanm
+cpanm Template YAML::XS File::Slurp DBI DBD::mysql
+
 set +eu
 set +x
