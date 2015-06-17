@@ -4,7 +4,7 @@ use warnings;
 use Data::Dumper;
 use File::Path qw(rmtree);
 
-BEGIN { unshift(@INC, './modules') }
+BEGIN { unshift(@INC, './lib') }
 BEGIN {
     use Test::Most;
     use_ok('SetupTracking::Directories');

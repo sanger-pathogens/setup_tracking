@@ -17,9 +17,8 @@ git clone $VRCODEBASE_GIT_URL
 
 #Add lovations to PERL5LIB
 VRCODEBASE_LIB=${start_dir}'/git_repos/vr-codebase/modules'
-SELF_LIB=${start_dir}'/modules'
 
-export PERL5LIB=${VRCODEBASE_LIB}:${SELF_LIB}:$PERL5LIB
+export PERL5LIB=${VRCODEBASE_LIB}:$PERL5LIB
 
 cd $start_dir
 
