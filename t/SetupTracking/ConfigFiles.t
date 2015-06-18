@@ -4,7 +4,7 @@ use warnings;
 use Data::Dumper;
 use File::Compare;
 
-BEGIN { unshift(@INC, './modules') }
+BEGIN { unshift(@INC, './lib') }
 BEGIN {
     use Test::Most;
     use SetupTracking::Directories;

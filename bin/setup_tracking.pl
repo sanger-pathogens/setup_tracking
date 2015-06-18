@@ -16,7 +16,9 @@ path-help@sanger.ac.uk
 
 =cut
 
-BEGIN { unshift(@INC, './modules') }
+# PODNAME: setup_tracking.pl
+
+BEGIN { unshift(@INC, './lib') }
 use strict;
 use warnings;
 no warnings 'uninitialized';
