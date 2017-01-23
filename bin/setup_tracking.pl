@@ -44,7 +44,7 @@ $shortname = $ARGV[0];
 (length($shortname) >= 3 && length($shortname) < 10 ) or die <<USAGE;
 
 Usage: $0 [options] short_name
-  -d|pipeline_base_directory  <Base directory for pipeline defaults to /lustre/scratch118/pathogen/pathpipe>
+  -d|pipeline_base_directory  <Base directory for pipeline defaults to /lustre/scratch118/infgen/pathogen/pathpipe>
   -c|config_base_directory    <Config file directory, defaults to /nfs/pathnfs01/conf>
   -l|log_base_directory       <Log file directory, defaults to /nfs/pathnfs01/log>
   -p|prefix                   <prefix of database name, defaults to pathogen>
@@ -57,19 +57,19 @@ Defaults should be find for pathogens, so typical usage is:
 $0 abc
 which creates a database called pathogen_abc_external,
 config files in /nfs/pathnfs01/conf/pathogen_abc_external
-and pipeline files in /lustre/scratch118/pathogen/pathpipe/pathogen_abc_external/seq-pipelines
+and pipeline files in /lustre/scratch118/infgen/pathogen/pathpipe/pathogen_abc_external/seq-pipelines
 
 Setup a new vrtrack pipeline. It creates a database, initally seeds it, creates directories, creates config files and outputs the line to add to the crontab.
 USAGE
 
-$pipeline_base_directory ||= '/lustre/scratch118/pathogen/pathpipe' ;
+$pipeline_base_directory ||= '/lustre/scratch118/infgen/pathogen/pathpipe' ;
 $config_base_directory   ||= '/nfs/pathnfs05/conf';
 $log_base_directory      ||= '/nfs/pathnfs05/log' ;
 $prefix                  ||= 'pathogen';
 $suffix                  ||= 'external';
 $environment             ||= 'production';
 
-my $assembly_file = $populate_assembly ? undef :'/lustre/scratch118/pathogen/pathpipe/refs/refs.index';
+my $assembly_file = $populate_assembly ? undef :'/lustre/scratch118/infgen/pathogen/pathpipe/refs/refs.index';
 
 SetupTracking::Tracking->new(
   short_name              => $shortname,
