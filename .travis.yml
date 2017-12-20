@@ -4,10 +4,11 @@ addons:
     packages:
     - git
     - libyaml-dev
-    - libmysqlclient-dev-5.5.38
+    - libmysqlclient-dev
 perl:
   - 5.14
-sudo: false
+sudo: required
+dist: precise
 install:
   - "source ./install_dependencies.sh"
 script: dzil test	
