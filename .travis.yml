@@ -7,8 +7,9 @@ addons:
     - libmysqlclient-dev
 perl:
   - 5.14
-sudo: required
-dist: precise
+sudo: false
+services:
+  - mysql
 install:
   - "source ./install_dependencies.sh"
 script: dzil test	
