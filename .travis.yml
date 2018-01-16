@@ -1,12 +1,13 @@
 language: perl
 addons:
   apt:
-    sources:
-    - mysql-5.7
     packages:
     - git
     - libyaml-dev
     - libmysqlclient-dev
+    - mysql-server-5.7
+    - mysql-client-core-5.7
+    - mysql-client-5.7
 perl:
   - 5.14
 sudo: false
