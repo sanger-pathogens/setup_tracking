@@ -8,6 +8,8 @@ addons:
 perl:
   - 5.14
 sudo: false
+services:
+  - mysql
 install:
   - "source ./install_dependencies.sh"
-script: dzil test	
+script: dzil test
