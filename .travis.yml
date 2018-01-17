@@ -5,12 +5,11 @@ addons:
     - git
     - libyaml-dev
     - libmysqlclient-dev
-    - mysql-server-5.7
-    - mysql-client-core-5.7
-    - mysql-client-5.7
 perl:
   - 5.14
 sudo: false
+services:
+  - mysql
 install:
   - "source ./install_dependencies.sh"
-script: dzil test	
+script: dzil test
